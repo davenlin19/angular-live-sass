@@ -81,6 +81,6 @@ gulp.task('compile', function () {
 	// }
 });
 
-gulp.task('default', function() {
+gulp.task('default', ['livesass'], function() {
 	gulp.watch('../src/app/contract/contract.component.scss', ['livesass']);
 });
