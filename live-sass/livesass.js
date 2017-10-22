@@ -7,7 +7,9 @@ function livesass() {
 function removeStyle(selector) {
 	var component = document.querySelector(selector);
 	if (component !== null) {
-		var encapsulationAttr = component.getAttributeNames()[0];
+		var encapsulationAttr = component.getAttributeNames().find(function(attr) {
+		    return attr.indexOf("_nghost") === 0;
+		});
 		var match = encapsulationAttr.match(/_nghost-(.*)/i);
 		if (match) {
 			var id = match[1];
