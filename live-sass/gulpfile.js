@@ -6,8 +6,6 @@ var inject = require('gulp-inject');
 var injectString = require('gulp-inject-string');
 var argv = require('yargs').argv;
 
-console.log(argv.selector);
-
 /*
 	Copy livesass.js to dist/live-sass
 	Dependence: inject
