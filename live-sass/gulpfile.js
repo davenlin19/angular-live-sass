@@ -4,10 +4,8 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var inject = require('gulp-inject');
-var injectString = require('gulp-inject-string');
 var argv = require('yargs').argv;
 var fs = require('fs');
-var watch = require('gulp-watch');
 var map = require('map-stream');
 
 var scssFile = '';
@@ -92,7 +90,7 @@ gulp.task('compile', function () {
 			.pipe(sourcemaps.mapSources(function(sourcePath, file) {
 				return scssFile;
 			}))
-			.pipe(sourcemaps.write({includeContent: false, sourceRoot: 'file:///Users/lampt/Work/dev/angular-live-sass'}))
+			.pipe(sourcemaps.write({includeContent: false, sourceRoot: 'file://' + __dirname + '/../'}))
 			.pipe(gulp.dest('../dist/live-sass'));
 });
 

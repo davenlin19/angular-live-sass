@@ -5,12 +5,6 @@ import {Component, AfterViewInit} from '@angular/core';
   	templateUrl: './app.component.html',
   	styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent {
   	title = 'app';
-
-  	ngAfterViewInit() {
-  		if (window.hasOwnProperty('livesass') && typeof window['livesass'] === 'function') {
-  			window['livesass']();
-  		}
-	}
 }
