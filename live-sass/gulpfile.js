@@ -25,6 +25,9 @@ if (argv.dirPath !== undefined) {
 	}
 }
 
+console.log('SCSS', scssFile);
+console.log('TS', tsFile);
+
 /*
 	Copy livesass.js to dist/live-sass
 	Dependence: inject

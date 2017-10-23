@@ -14,7 +14,7 @@ function removeStyle(selector) {
 		if (match) {
 			var id = match[1];
 			for (let stl of document.getElementsByTagName('style')) {
-				if (stl.firstChild.data.indexOf('_ngcontent-' + id) >= 0) {
+				if (stl.firstChild !== null && stl.firstChild.data.indexOf('_ngcontent-' + id) >= 0) {
 					stl.parentNode.removeChild(stl);
 				}
 			}
