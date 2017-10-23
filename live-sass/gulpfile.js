@@ -27,12 +27,12 @@ console.log('SCSS', scssFile);
 console.log('TS', tsFile);
 
 /*
-	Copy livesass.js to dist/live-sass
+	Copy livesass.js to assets/livesass
 	Dependence: inject
 */
 gulp.task('copy', ['inject:js'], function() {
 	return gulp.src('./livesass.js')
-			.pipe(gulp.dest('../dist/live-sass/'));
+			.pipe(gulp.dest('../src/assets/livesass'));
 });
 
 /*
@@ -43,7 +43,7 @@ gulp.task('inject:js', function() {
 			.pipe(
 				inject(
 					gulp.src('./livesass.js', {read: false})
-						.pipe(gulp.dest('live-sass'))
+						.pipe(gulp.dest('assets/livesass'))
 				)
 			)
 			.pipe(gulp.dest('../src'));
@@ -56,8 +56,8 @@ gulp.task('inject:css', ['compile'], function() {
 	return gulp.src('../src/index.html')
 			.pipe(
 				inject(
-					gulp.src('../dist/live-sass/*.css', {read: false})
-						.pipe(gulp.dest('live-sass'))
+					gulp.src('../src/assets/livesass/*.css', {read: false})
+						.pipe(gulp.dest('assets/livesass'))
 				)
 			)
 			.pipe(gulp.dest('../src'));
@@ -71,9 +71,9 @@ gulp.task('livesass', ['copy', 'inject:css'], function() {
 	gulp.src('../' + tsFile)
 	    .pipe(map(function(file, callback) {
 		    var match = file.contents.toString().match(/selector: '(.*)',/i);
-		    fs.readFile('../dist/live-sass/livesass.js', function read(err, data) {
+		    fs.readFile('../src/assets/livesass/livesass.js', function read(err, data) {
 			    if (match) {
-				    fs.writeFile('../dist/live-sass/livesass.js', 'var selector = \'' + match[1] + '\';\n\n' + data.toString());
+				    fs.writeFile('../src/assets/livesass/livesass.js', 'var selector = \'' + match[1] + '\';\n\n' + data.toString());
 			    }
 			    callback(null, file);
 		    });
@@ -91,7 +91,7 @@ gulp.task('compile', function () {
 				return scssFile;
 			}))
 			.pipe(sourcemaps.write({includeContent: false, sourceRoot: 'file://' + __dirname + '/../'}))
-			.pipe(gulp.dest('../dist/live-sass'));
+			.pipe(gulp.dest('../src/assets/livesass'));
 });
 
 gulp.task('default', ['livesass'], function() {
