@@ -18,8 +18,8 @@ if (argv.dirPath !== undefined) {
 		scssFile = argv.dirPath + segments[segments.length - 2] + '.component.scss';
 		tsFile = argv.dirPath + segments[segments.length - 2] + '.component.ts';
 	} else {
-		scssFile = argv.dirPath + '/' + segments[segments.length - 2] + '.component.scss';
-		tsFile = argv.dirPath + '/' + segments[segments.length - 2] + '.component.ts';
+		scssFile = argv.dirPath + '/' + segments[segments.length - 1] + '.component.scss';
+		tsFile = argv.dirPath + '/' + segments[segments.length - 1] + '.component.ts';
 	}
 }
 
