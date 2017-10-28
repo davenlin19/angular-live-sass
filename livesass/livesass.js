@@ -1,9 +1,19 @@
 const selectors = [];
 
+/**
+ * Add new selector to selectors array
+ * @param {string} selector: the new selector
+**/
 function addSelector(selector) {
     selectors.push(selector);
 }
 
+/**
+ * Set up an interval that find the corresponding component by selector
+ * When we found a component, call removeStyle function to remove its style from
+ * in head
+ * When all components' style have been removed, remove the interval
+**/
 function livesass() {
     if (selectors.length > 0) {
         var interval = setInterval(function () {
@@ -28,6 +38,11 @@ function livesass() {
     }
 }
 
+/**
+ * Find the encapsulation attribute of the input component
+ * Find the styles that use this attribute and remove them from head tag
+ * @param {object} component
+**/
 function removeStyle(component) {
     var encapsulationAttr = component.getAttributeNames().find(function (attr) {
         return attr.indexOf("_nghost") === 0;

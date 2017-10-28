@@ -75,7 +75,7 @@ gulp.task('inject:js', function() {
 });
 
 /*
-	Inject livesass.js into index.html
+	Inject css file into index.html
 */
 gulp.task('inject:css', ['compile'], function() {
 	return gulp.src('../src/index.html')
